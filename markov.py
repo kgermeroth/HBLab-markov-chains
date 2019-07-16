@@ -47,15 +47,18 @@ def make_chains(words):
 
     chains = {}
 
-    bigram_tuples = set()
 
-    # loop through list of words, create tuples of bigrams and add to set
+    # loop through list of words, create tuples of bigrams
+    # see if tuple is already in dictionary, if not add to dictionary, else append next word
     for i, word in enumerate(words):
-        if i < len(words) - 1:
-            bigram_tuples.add((word, words[i + 1]))
+        if i < len(words) - 2:
+            bigram_tuple = (word, words[i + 1])
+            
+            if chains.get(bigram_tuple) == None:
+                chains[bigram_tuple] = [words[i + 2]]
 
-    # take all the tuples in the set, "look them up" in list of words and find the next word
-    # add the key value pair to the dictionary
+            else:
+                chains[bigram_tuple].append(words[i + 2])
 
     return chains
 
