@@ -68,16 +68,16 @@ def make_text(chains):
 
     words = []
 
-    # # if you want to start with random tuple:
-    # tuples_for_random = []
+    # if you want to start with random tuple:
+    tuples_for_random = []
 
-    # for bigram_key in chains.keys():
-    #     tuples_for_random.append(bigram_key)
+    for bigram_key in chains.keys():
+        tuples_for_random.append(bigram_key)
     
-    # tuple_in_use = (choice(tuples_for_random))
+    tuple_in_use = (choice(tuples_for_random))
 
     # start with a specific tuple
-    tuple_in_use = ("could", "you")
+    # tuple_in_use = ("could", "you")
 
     words.append(tuple_in_use[0])
     words.append(tuple_in_use[1])
@@ -104,7 +104,7 @@ def make_text(chains):
     return " ".join(words)
 
 
-input_path = "green-eggs.txt"
+input_path = "harry_potter.txt"
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
