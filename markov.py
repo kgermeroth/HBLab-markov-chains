@@ -15,10 +15,12 @@ def open_and_read_file(file_path):
 
     words = file_text.split()
 
+    the_file.close()
+
     return words
 
 
-def make_chains(text_string):
+def make_chains(words):
     """Take input text as string; return dictionary of Markov chains.
 
     A chain will be a key that consists of a tuple of (word1, word2)
@@ -45,25 +47,33 @@ def make_chains(text_string):
 
     chains = {}
 
-    # your code goes here
+    bigram_tuples = set()
+
+    # loop through list of words, create tuples of bigrams and add to set
+    for i, word in enumerate(words):
+        if i < len(words) - 1:
+            bigram_tuples.add((word, words[i + 1]))
+
+    # take all the tuples in the set, "look them up" in list of words and find the next word
+    # add the key value pair to the dictionary
 
     return chains
 
 
-def make_text(chains):
-    """Return text from chains."""
+# def make_text(chains):
+#     """Return text from chains."""
 
-    words = []
+#     words = []
 
-    # your code goes here
+#     # your code goes here
 
-    return " ".join(words)
+#     return " ".join(words)
 
 
-input_path = "green-eggs.txt"
+# input_path = "green-eggs.txt"
 
-# # Open the file and turn it into one long string
-# input_text = open_and_read_file(input_path)
+# # # Open the file and turn it into one long string
+# # input_text = open_and_read_file(input_path)
 
 # # Get a Markov chain
 # chains = make_chains(input_text)
