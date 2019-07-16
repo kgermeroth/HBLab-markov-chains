@@ -68,21 +68,46 @@ def make_text(chains):
 
     words = []
 
-    # start with key tuple (randomly select from .keys())
+    # # if you want to start with random tuple:
+    # tuples_for_random = []
 
-    # loop until .get() == None
+    # for bigram_key in chains.keys():
+    #     tuples_for_random.append(bigram_key)
+    
+    # tuple_in_use = (choice(tuples_for_random))
+
+    # start with a specific tuple
+    tuple_in_use = ("could", "you")
+
+    words.append(tuple_in_use[0])
+    words.append(tuple_in_use[1])
+
+    # loop until the tuple is not a key
+    while True:
+        if chains.get(tuple_in_use) == None:
+            break
+    
     # choose random list item from that key as next word 
-    # add all to list
-    # move onto the next key tuple (words[-2:])
+        else:
+            values_for_random = []
 
+            for value_word in chains[tuple_in_use]:
+                values_for_random.append(value_word)
+    
+            next_word = choice(values_for_random)
+            
+            words.append(next_word)
+
+            # set the next tuple to use as a key
+            tuple_in_use = (words[-2], words[-1])
 
     return " ".join(words)
 
 
 input_path = "green-eggs.txt"
 
-# # Open the file and turn it into one long string
-# input_text = open_and_read_file(input_path)
+# Open the file and turn it into one long string
+input_text = open_and_read_file(input_path)
 
 # Get a Markov chain
 chains = make_chains(input_text)
