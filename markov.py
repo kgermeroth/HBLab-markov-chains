@@ -70,13 +70,12 @@ def make_text(chains):
     words = []
 
     # if you want to start with random tuple:    
-    tuple_in_use = choice(list(chains.keys()))
+    tuple_in_use = choice(list(chains))
 
     # start with a specific tuple
     # tuple_in_use = ("could", "you")
 
-    words.append(tuple_in_use[0])
-    words.append(tuple_in_use[1])
+    words.extend(tuple_in_use)
 
     # loop until the tuple is not a key
     while True:
