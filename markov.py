@@ -69,13 +69,8 @@ def make_text(chains):
 
     words = []
 
-    # if you want to start with random tuple:
-    tuples_for_random = []
-
-    for bigram_key in chains.keys():
-        tuples_for_random.append(bigram_key)
-    
-    tuple_in_use = (choice(tuples_for_random))
+    # if you want to start with random tuple:    
+    tuple_in_use = choice(list(chains.keys()))
 
     # start with a specific tuple
     # tuple_in_use = ("could", "you")
@@ -89,13 +84,8 @@ def make_text(chains):
             break
     
     # choose random list item from that key as next word 
-        else:
-            values_for_random = []
-
-            for value_word in chains[tuple_in_use]:
-                values_for_random.append(value_word)
-    
-            next_word = choice(values_for_random)
+        else:    
+            next_word = choice(list(chains[tuple_in_use]))
             
             words.append(next_word)
 
